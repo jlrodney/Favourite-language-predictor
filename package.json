@@ -6,6 +6,7 @@
     "cross-fetch": "^2.2.3",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
+    "fetch-mock": "^7.2.5",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
