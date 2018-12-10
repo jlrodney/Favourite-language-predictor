@@ -2,25 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function languageScores(arrayOfRepos) {
-  let languageFrequencyHash = {};
+  const languageHash = {};
   // console.log(arrayOfRepos);
-  for (var i = 0; i < arrayOfRepos.length; i++) {
-    if(!languageFrequencyHash[arrayOfRepos[i].language])
-    languageFrequencyHash[arrayOfRepos[i].language] = 0;
-    languageFrequencyHash[arrayOfRepos[i].language]++;
+  for (let i = 0; i < arrayOfRepos.length; i++) {
+    if (!languageHash[arrayOfRepos[i].language]) languageHash[arrayOfRepos[i].language] = 0;
+    languageHash[arrayOfRepos[i].language]++;
   }
-  // console.log(languageFrequencyHash)
-  delete languageFrequencyHash.null
-  let number = Object.keys(languageFrequencyHash).reduce((a,b) => (languageFrequencyHash[a]>languageFrequencyHash[b])? a:b)
+  // console.log(languageHash)
+  delete languageHash.null;
+  const number = Object.keys(languageHash).reduce((a, b) => ((languageHash[a] > languageHash[b]) ? a : b));
   // console.log(number)
-  return number
-};
+  return number;
+}
 const FaveLanguage = props => (
-                <p className="fave-language">{languageScores(props.repos)}</p>
+  <p className="fave-language">{languageScores(props.repos)}</p>
 );
 
 FaveLanguage.propTypes = {
-    repos: PropTypes.array.isRequired,
+  repos: PropTypes.array.isRequired,
 };
 
 export default FaveLanguage;
