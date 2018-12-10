@@ -1,12 +1,12 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import GithubRepo from '../GithubRepo'
+import GithubRepoForm from '../GithubRepoForm'
 function setup() {
   const props = {
     onSubmit: jest.fn()
   }
-  const enzymeWrapper = shallow(<GithubRepo {...props} />)
+  const enzymeWrapper = shallow(<GithubRepoForm {...props} />)
   return {
     props,
     enzymeWrapper

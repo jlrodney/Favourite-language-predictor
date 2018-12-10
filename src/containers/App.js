@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchRepos } from '../actions/actions';
-import GithubRepo from '../components/GithubRepo';
+import GithubRepoForm from '../components/GithubRepoForm';
+import GithubUser from '../components/GithubUser';
 
 class App extends Component {
     constructor(props) {
@@ -16,13 +17,19 @@ class App extends Component {
     }
 
     render() {
+      const { getRepos } = this.props
         return (
           <div>
             <header>
-            <h1 className="header">Github user's favourite language predictor!</h1>
+            <h1 className="header">A developer's favourite language predictor!</h1>
             </header>
                   <div>
-                      <GithubRepo onSubmit={this.handleSubmit} />
+                      <GithubRepoForm onSubmit={this.handleSubmit} />
+                      <div>
+                        <GithubUser
+                          getRepos={getRepos}
+                      />
+                      </div>
                   </div>
 
         </div>

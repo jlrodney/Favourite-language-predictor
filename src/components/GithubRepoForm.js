@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GithubRepo = props => {
+const GithubRepoForm = props => {
     let input;
     const { onSubmit } = props;
     return (
@@ -31,8 +31,8 @@ const GithubRepo = props => {
     );
 };
 
-GithubRepo.propTypes = {
+GithubRepoForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 };
 
-export default GithubRepo;
+export default GithubRepoForm;
