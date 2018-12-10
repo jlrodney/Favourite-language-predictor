@@ -1,8 +1,19 @@
+# Favoutite Language Predictor
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app guesses a user's favourite programming language from analysing a user's most frequent language they have created public github repos in.  
 
-## Available Scripts
+## Technologies
+This app was built using React and Redux. Redux is a state manager. Redux was useful in helping me organise my thoughts around where state was, where it should be, and how to move state from component to component in a scaleable way.
 
-In the project directory, you can run:
+## Usage
+
+1. Clone this repo to your local machine. 
+```
+git clone https://github.com/jlrodney/Favourite-language-predictor
+cd Favourite-language-predictor
+```
+Once in the project directory, you can run:
 
 ### `npm start`
 
@@ -37,8 +48,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
