@@ -9,6 +9,7 @@ export function getRepos(
   state = {
     isFetching: false,
     repos: [],
+    error: '',
   },
   action,
 ) {
@@ -25,7 +26,7 @@ export function getRepos(
     case RECEIVE_REPOS_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
-        repos: action.error,
+        error: action.error,
       });
     default:
       return state;

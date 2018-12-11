@@ -6,75 +6,29 @@ import {
   RECEIVE_REPOS_ERROR,
 } from '../../constants/ActionTypes';
 
+const initialState = {
+  repos: [],
+  isFetching: false,
+  error: "",
+}
+
 describe('getRepos reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual({ getRepos: { isFetching: false, repos: [] } });
-  });
-
-  const repoState = {
-    isFetching: false,
-    repos: [{ a: 'b' }, { b: 'c' }],
-  };
-
-  it('should handle REQUEST_REPOS', () => {
-    expect(
-      reducer([], {
-        type: REQUEST_REPOS,
-        repos: [{ a: 'b' }],
-      }),
-    ).toEqual({ getRepos: { isFetching: true, repos: [] } });
-
-    expect(
-      reducer(
-        [
-          { a: 'b' },
-        ],
-        {
-          type: REQUEST_REPOS,
-        },
-      ),
-    ).toEqual({ getRepos: { isFetching: true, repos: [] } });
-  });
-
-  describe('getRepos', () => {
-    it('should respond to REQUEST_REPOS', () => {
-      expect(getRepos({}, Object.assign({}, { type: 'REQUEST_REPOS' }, repoState))).toEqual({ getRepos: { isFetching: true, repos: [] } });
-    });
+    expect(reducer(undefined, {})).toEqual({ getRepos: initialState });
   });
 
   it('should handle REQUEST_REPOS', () => {
-    expect(
-      reducer([], {
-        type: REQUEST_REPOS,
-      }),
-    ).toEqual({ getRepos: { isFetching: true, repos: [] } });
-    expect(
-      reducer(
-        [
-          { a: 'b' },
-        ],
-        {
-          type: RECEIVE_REPOS_SUCCESS,
-        },
-      ),
-    ).toEqual({ getRepos: { isFetching: false, repos: undefined } });
+    const newState = reducer(initialState, { type: REQUEST_REPOS });
+    expect(newState).toEqual({ getRepos: { error: '', isFetching: true, repos: [] } });
   });
 
-  it('should handle REQUEST_REPOS', () => {
-    expect(
-      reducer([], {
-        type: REQUEST_REPOS,
-      }),
-    ).toEqual({ getRepos: { isFetching: true, repos: [] } });
-    expect(
-      reducer(
-        [
-          { a: 'b' },
-        ],
-        {
-          type: RECEIVE_REPOS_ERROR,
-        },
-      ),
-    ).toEqual({ getRepos: { isFetching: false, repos: undefined } });
+  it('should handle RECEIVE_REPOS_SUCCESS', () => {
+    const newState = reducer(initialState, { type: RECEIVE_REPOS_SUCCESS, repos: [ {a:"b", c:"d" }] });
+    expect(newState).toEqual({ getRepos: { error: '', isFetching: false, repos: [{a:"b", c:"d"}] } });
   });
+
+  it('should handle RECEIVE_REPOS_ERROR', () => {
+    const newState = reducer(initialState, { type: RECEIVE_REPOS_ERROR, error: "ERROR: Incorrect username" });
+    expect(newState).toEqual({ getRepos: { error: "ERROR: Incorrect username", isFetching: false, repos: [] } });
+  })
 });
