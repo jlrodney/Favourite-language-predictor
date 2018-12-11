@@ -1,7 +1,7 @@
 # Favoutite Language Predictor
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This app guesses a user's favourite programming language from analysing a user's most frequent language they have created public github repos in.  
+This app guesses a user's favourite programming language from analysing the languages that the user has written in, in public github repos.  
 
 ## Technologies
 This app was built using React and Redux. Redux is a state manager. Redux was useful in helping me organise my thoughts around where state was, where it should be, and how to move state from component to component in a scaleable way.
