@@ -9,7 +9,6 @@ function languageScores(arrayOfRepos) {
   }
   delete languageHash.null;
   const language = Object.keys(languageHash).reduce((a, b) => ((languageHash[a] > languageHash[b]) ? a : b));
-  // console.log(number)
   return language;
 }
 const FaveLanguage = props => (
