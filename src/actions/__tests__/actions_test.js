@@ -40,20 +40,22 @@ describe('actions', () => {
     return store.dispatch(actions.fetchRepos()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
-  })
+  });
 
-    it('should fetch repos successfully', () => {
-      fetchMock.get("*", {throws: {error: 'Some No Good Error'}});
-      const expectedActions = [
-        {"type": "REQUEST_REPOS"},
-        {"error": {error: "Some No Good Error"},
-      "type": "RECEIVE_REPOS_ERROR"}
+  it('should fetch repos unsuccessfully', () => {
+    fetchMock.get('*', { throws: { error: 'Some No Good Error' } });
+    const expectedActions = [
+      { type: REQUEST_REPOS },
+      {
+        error: { error: 'Some No Good Error' },
+        type: RECEIVE_REPOS_ERROR,
+      },
     ];
 
-      const store = mockStore({ repos: [] });
+    const store = mockStore({ repos: [] });
 
-      return store.dispatch(actions.fetchRepos()).then(() => {
-        expect(store.getActions()).toEqual(expectedActions);
-      })
+    return store.dispatch(actions.fetchRepos()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
     });
+  });
 });

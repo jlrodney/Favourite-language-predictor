@@ -3,23 +3,25 @@ import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import App from '../App';
 import toJson from 'enzyme-to-json';
+import App from '../App';
 
 
-let mockProps = {
-   getRepos: {
+const mockProps = {
+  getRepos: {
     repos: [{ language: 'Python' }, { language: 'Ruby' }, { language: 'Python' }],
-    isFetching: false},
+    isFetching: false,
+  },
 };
 const mockStore = configureStore([thunk]);
 const initialState = {
-   getRepos: {
+  getRepos: {
     repos: [],
-    isFetching: false},
+    isFetching: false,
+  },
 };
 const store = mockStore(initialState);
-const store2 = mockStore(mockProps)
+const store2 = mockStore(mockProps);
 
 describe('App', () => {
   it('dispatches REQUEST_REPOS event', () => {
@@ -29,7 +31,6 @@ describe('App', () => {
   });
 
   describe('render', () => {
-
     it('Renders the App', () => {
       const getRepos = jest.fn();
       const appWrapper = shallow(<App store={store} />);
@@ -39,14 +40,15 @@ describe('App', () => {
   });
 
   describe('button clicking', () => {
-
     it('has buttons and displays answer after submitting', () => {
       const getRepos = jest.fn();
+      const fetchRepos = jest.fn();
       const appWrapper = mount(<App store={store2} />);
       expect(appWrapper.state()).toEqual({ });
-      appWrapper.find('input').instance().value = "jamie"
+      appWrapper.find('input').instance().value = 'jamie';
       appWrapper.find('button').simulate('click');
       expect(appWrapper.state()).toEqual({ });
+      expect(fetchRepos).toHaveBeenCalled;
     });
-  })
+  });
 });

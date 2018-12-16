@@ -25,11 +25,9 @@ class App extends Component {
         </header>
         <div>
           <GithubRepoForm onSubmit={this.handleSubmit} />
-          <div>
-            <GithubUser
-              getRepos={getRepos}
-            />
-          </div>
+        </div>
+        <div>
+          <GithubUser getRepos={getRepos} />
         </div>
 
       </div>

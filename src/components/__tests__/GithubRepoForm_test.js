@@ -1,13 +1,12 @@
 import React from 'react';
-import Enzyme, { shallow, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 import GithubRepoForm from '../GithubRepoForm';
 
 function setup() {
   const props = {
     onSubmit: jest.fn(),
   };
-  const enzymeWrapper = mount(<GithubRepoForm {...props} />);
+  const enzymeWrapper = shallow(<GithubRepoForm {...props} />);
   return {
     props,
     enzymeWrapper,
@@ -22,7 +21,7 @@ describe('components', () => {
       const GithubRepoInputProps = enzymeWrapper.find('input').props();
       expect(GithubRepoInputProps.placeholder).toEqual('Github Username...');
     });
-    it('should render self and subcomponents', () => {
+    it('should render search button', () => {
       const { enzymeWrapper } = setup();
       expect(enzymeWrapper.find('button').text()).toEqual('Search!');
     });
